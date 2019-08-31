@@ -1,7 +1,7 @@
 name: selectable_carousel
 description: A selectable carousel for Flutter, with a responsive and customizable layout.
 version: 0.0.1
-author: Jehad Nasser
+author: Jehad Nasser <jehadhnasser@gmail.com>
 homepage: https://github.com/jehadnasser/selectable_carousel
 
 environment:

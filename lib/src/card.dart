@@ -83,7 +83,7 @@ class _SelectableCardState extends State<SelectableCard> {
 
     double _width = width;
     double _height = (height == null) ? (1.66 * _width) : height;
-    double _titleSize = 0.24 * width;
+//    double _titleSize = 0.24 * width;
     double _titlePadding = (title != null)
         ? (0.05 * _height)
         : 0.0;
@@ -96,9 +96,9 @@ class _SelectableCardState extends State<SelectableCard> {
         ? (0.04 * _height)
         : (0.04 * _height + borderWidth);
 
-    double _bodyBottomPadding = isSelected
-        ? (0.02 * _height)
-        : (0.02 * _height + borderWidth);
+//    double _bodyBottomPadding = isSelected
+//        ? (0.02 * _height)
+//        : (0.02 * _height + borderWidth);
 
     return GestureDetector(
       onTap: onTap,

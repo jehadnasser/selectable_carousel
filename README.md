@@ -13,7 +13,7 @@ A selectable carousel for Flutter, with a responsive and customizable layout, [F
 Add
 
 ```bash
-selectable_carousel: ^0.0.1
+selectable_carousel: ^0.0.2
 ```
 to your pubspec.yaml, and run
 

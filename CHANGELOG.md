@@ -1,4 +1,7 @@
 ## [0.0.1] - [2019/08/31]
+* README updates.
+
+## [0.0.1] - [2019/08/31]
 
 * Selectable, single select only.
 * Swipeable.

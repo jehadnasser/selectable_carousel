@@ -1,7 +1,8 @@
 # Selectable Carousel
 
 A selectable carousel for Flutter, with a responsive and customizable layout.
-<img src="https://github.com/jehadnasser/images/blob/master/selectable_carousal_demo.jpg" alt="Selectable Carousel" width="303"/>
+
+![](https://github.com/jehadnasser/images/blob/master/selectable_carousal_demo_sm.jpg)
 
 # Demo
 ![](https://github.com/jehadnasser/images/blob/master/selectable_carousal_demo.gif)

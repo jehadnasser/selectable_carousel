@@ -4,5 +4,7 @@ dart:
   - stable
   # Install the latest dev release
   - dev
+install:
+  - flutter pub get
 branches:
   only: [master]

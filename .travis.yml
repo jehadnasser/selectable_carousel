@@ -1,0 +1,8 @@
+#language: dart
+#
+#install:
+#  - flutter pub get --packages-dir
+#
+#script:
+#  - flutter pub pub publish --dry-run
+#  - flutter pub pub publish

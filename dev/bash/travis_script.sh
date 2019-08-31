@@ -9,9 +9,7 @@ if [[ "$SHARD" == "dartfmt" ]]; then
  cd $ROOT
  flutter format . || exit $?
 else
-  # tests shard
-  cd $ROOT
-
-  flutter test --coverage test/* || exit $?
-
+ # tests shard
+ cd $ROOT
+ flutter test --coverage test/* || exit $?
 fi

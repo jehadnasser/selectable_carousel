@@ -1,6 +1,7 @@
 # Selectable Carousel
+[![Build Status](https://travis-ci.org/jehadnasser/selectable_carousel.svg?branch=master)](https://travis-ci.org/jehadnasser/selectable_carousel)
 
-A selectable carousel for Flutter, with a responsive and customizable layout.
+A selectable carousel for Flutter, with a responsive and customizable layout, [Find it on pub.dev](https://pub.dev/packages/selectable_carousel).
 
 ![](https://github.com/jehadnasser/images/blob/master/selectable_carousal_demo_sm.jpg)
 

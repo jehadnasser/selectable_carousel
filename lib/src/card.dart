@@ -1,11 +1,13 @@
 /// Copyright (c) 2019, Jehad Nasser. All rights reserved.
 /// Use of this source code is governed by a MIT License that can be found in the LICENSE file.
-
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'selectable_carousal_controller.dart';
 
 typedef void IntCallback(int val);
 
 class SelectableCard extends StatefulWidget {
+  final SelectableCarousalController controller;
   final IntCallback onChanged;
   final int id;
   final int selectedId;
@@ -24,6 +26,7 @@ class SelectableCard extends StatefulWidget {
   SelectableCard({
     @required this.onChanged,
     @required this.id,
+    this.controller,
     this.selectedId,
     this.title,
     this.body,
@@ -44,10 +47,27 @@ class SelectableCard extends StatefulWidget {
 
 class _SelectableCardState extends State<SelectableCard> {
   bool _isSelected = false;
+  int _selectedId;
+
+  StreamSubscription selectedIdSubscription;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    Stream selectByIdStream = widget.controller?.selectByIdStream;
+    selectedIdSubscription?.cancel();
+    selectedIdSubscription = selectByIdStream.listen((value) {
+      // do something
+      setState(() {
+        _selectedId = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    _isSelected = widget.id == widget.selectedId;
+    _selectedId = _selectedId ?? widget.selectedId;
+    _isSelected = widget.id == _selectedId;
 
     return buildCarousalCard(
       title: widget.title,
@@ -80,42 +100,29 @@ class _SelectableCardState extends State<SelectableCard> {
     bool fullScreen = false,
     String displaySelectionBorder = 'body',
   }) {
-
     double _width = width;
     double _height = (height == null) ? (1.66 * _width) : height;
-//    double _titleSize = 0.24 * width;
-    double _titlePadding = (title != null)
-        ? (0.05 * _height)
-        : 0.0;
+    double _titlePadding = (title != null) ? (0.05 * _height) : 0.0;
 
-    double _titleBodySpace = (title != null)
-        ? 8.0
-        : 0.0;
+    double _titleBodySpace = (title != null) ? 8.0 : 0.0;
 
-    double _bodyPadding = isSelected
-        ? (0.04 * _height)
-        : (0.04 * _height + borderWidth);
-
-//    double _bodyBottomPadding = isSelected
-//        ? (0.02 * _height)
-//        : (0.02 * _height + borderWidth);
+    double _bodyPadding =
+        isSelected ? (0.04 * _height) : (0.04 * _height + borderWidth);
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
-
         decoration: (isSelected && displaySelectionBorder == 'all')
             ? BoxDecoration(
-          border: Border.all(
-            width: borderWidth,
-            color: borderColor,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(selectBorderRadius),
-          ),
-        )
+                border: Border.all(
+                  width: borderWidth,
+                  color: borderColor,
+                ),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(selectBorderRadius),
+                ),
+              )
             : null,
-
         height: _height,
         width: _width,
         child: Card(
@@ -144,27 +151,28 @@ class _SelectableCardState extends State<SelectableCard> {
                 ),
                 Flexible(
                   child: Container(
-                    height: (title == null) ? (_height /1.45) : null,
+                    height: (title == null) ? (_height / 1.45) : null,
                     margin: EdgeInsets.only(
                       top: _titleBodySpace,
                     ),
                     alignment: Alignment.center,
                     padding: EdgeInsets.only(
-                      top: fullScreen ? 0.0 : _bodyPadding ,
-                      bottom: fullScreen ? 0.0 : _bodyPadding,//_bodyBottomPadding,
+                      top: fullScreen ? 0.0 : _bodyPadding,
+                      bottom: fullScreen ? 0.0 : _bodyPadding,
+                      //_bodyBottomPadding,
                       left: fullScreen ? 0.0 : _bodyPadding,
                       right: fullScreen ? 0.0 : _bodyPadding,
                     ),
                     decoration: (isSelected && displaySelectionBorder == 'body')
                         ? BoxDecoration(
-                      border: Border.all(
-                        width: borderWidth,
-                        color: borderColor,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(selectBorderRadius),
-                      ),
-                    )
+                            border: Border.all(
+                              width: borderWidth,
+                              color: borderColor,
+                            ),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(selectBorderRadius),
+                            ),
+                          )
                         : null,
                     child: body,
                   ),

@@ -1,3 +1,7 @@
+## [0.1.0] - [2019/09/04]
+* Add carousal controller.
+* Controller control the selection and moving with animation.
+
 ## [0.0.2] - [2019/08/31]
 * README updates.
 

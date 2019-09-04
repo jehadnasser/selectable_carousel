@@ -1,3 +1,6 @@
+## [0.1.1] - [2019/09/04]
+* Expose the controller to the end user.
+
 ## [0.1.0] - [2019/09/04]
 * Add carousal controller.
 * Controller control the selection and moving with animation.

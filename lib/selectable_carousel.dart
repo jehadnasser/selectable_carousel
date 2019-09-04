@@ -5,3 +5,4 @@
 library selectable_carousel;
 
 export 'src/carousel.dart';
+export 'src/selectable_carousal_controller.dart';
